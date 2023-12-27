@@ -54,7 +54,6 @@ class Server:
                 data.append(next_data)
             next_index += 1
 
-
         res = {
                 'index': index,
                 'next_index': next_index,
