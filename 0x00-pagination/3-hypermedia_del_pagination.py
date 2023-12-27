@@ -40,4 +40,26 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        pass
+        """ Get hyper index information for pagination. """
+        dataset = self.indexed_dataset()
+        max_range = len(dataset) - 1
+        assert isinstance(index, int) and 0 <= index <= max_range
+
+        next_index = index
+
+        data: List = []
+        while len(data) < page_size and next_index < max_range:
+            next_data = dataset.get(next_index)
+            if next_data:
+                data.append(next_data)
+            next_index += 1
+
+
+        res = {
+                'index': index,
+                'next_index': next_index,
+                'page_size': page_size,
+                'data': data
+                }
+
+        return res
