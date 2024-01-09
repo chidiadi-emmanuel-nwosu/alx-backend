@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" 1-app """
+""" 3-app """
 
 from flask import Flask, render_template, request
 from flask_babel import Babel
@@ -20,14 +20,14 @@ app.config.from_object(Config)
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """ get_locale
     """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/', strict_slashes=False)
-def index():
+def index() -> str:
     """ index route
     """
     return render_template('3-index.html')
