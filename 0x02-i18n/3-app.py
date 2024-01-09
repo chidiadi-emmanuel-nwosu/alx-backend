@@ -20,14 +20,14 @@ app.config.from_object(Config)
 
 
 @babel.localeselector
-def get_locale() -> str:
+def get_locale():
     """ get_locale
     """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/', strict_slashes=False)
-def index() -> str:
+def index():
     """ index route
     """
     return render_template('3-index.html')
